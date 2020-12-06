@@ -1,0 +1,22 @@
+{
+  "extends": "@abhijithvijayan/tsconfig",
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "downlevelIteration": true,
+    "importHelpers": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+      "es2015",
+      "es2015.collection",
+      "es2015.iterable"
+    ],
+    "declaration": false,
+    "isolatedModules": true,
+    "useDefineForClassFields": true,
+    "skipLibCheck": true
+  },
+  "include": ["source", "webpack.config.js"]
+}
