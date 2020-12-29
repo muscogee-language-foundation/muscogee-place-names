@@ -38,6 +38,8 @@
     "__chrome|opera__persistent": false
   },
 
+  "permissions": ["activeTab", "tabs"],
+
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
