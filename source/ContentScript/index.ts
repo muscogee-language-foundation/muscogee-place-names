@@ -20,25 +20,26 @@ function replaceText(node: Node) {
 
     for (let [word, creek] of map) {
       const regex = regexs.get(word);
-      // @ts-ignore If content exists then replace it, otherwise do nothing
-      content = content?.replace(regex, creek);
+
+      if (content !== null) {
+        content = content.replace(regex, creek);
+      }
     }
 
     node.textContent = content;
   } else {
-    for (let i = 0; i < node.childNodes.length; i++) {
-      replaceText(node.childNodes[i]);
-    }
+    node.childNodes.forEach((node) => {
+      replaceText(node);
+    });
   }
 }
 
 const observer = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {
     if (mutation.addedNodes && mutation.addedNodes.length > 0) {
-      for (let i = 0; i < mutation.addedNodes.length; i++) {
-        const newNode = mutation.addedNodes[i];
-        replaceText(newNode);
-      }
+      mutation.addedNodes.forEach((addedNode) => {
+        replaceText(addedNode);
+      });
     }
   });
 });
